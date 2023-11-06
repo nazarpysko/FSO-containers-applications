@@ -1,0 +1,15 @@
+1) Create Dockerfile with content:
+FROM node:16
+  
+WORKDIR /usr/src/app
+
+COPY --chown=node:node . .
+RUN npm ci 
+
+ENV DEBUG=playground:*
+  
+USER node
+CMD npm start
+
+2) Run command docker build -t express-server . && docker run -p 3000:3000 express-server
+3) Check localhost:3000 is working properly
